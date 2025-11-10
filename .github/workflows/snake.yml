@@ -1,26 +1,35 @@
-name: Generate snake
+# Nombre del flujo de trabajo
+name: Generate Snake Animation
+
 on:
+  # Esto lo corre automáticamente cada 12 horas
   schedule:
-    - cron: "0 */12 * * *" # Se actualiza cada 12 horas
-  workflow_dispatch: # Te permite ejecutarlo manualmente
+    - cron: "0 */12 * * *"
+  
+  # Esto te permite correrlo manualmente desde la pestaña "Actions"
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      # 1. Obtiene el código de tu repositorio
+      - uses: actions/checkout@v3
 
-      - name: Generate snake animation
+      # 2. Aquí está el bloque que tú encontraste
+      - name: Generate snake
         uses: Platane/snk@v3
         with:
-          # Tu nombre de usuario de GitHub
+          # Tu nombre de usuario (ya está puesto)
           github_user_name: Oscar-Chavez-Vasquez
           
-          # Dónde guardar los archivos SVG
+          # Los 3 archivos que se van a crear (simple, modo oscuro y GIF)
           outputs: |
-            dist/github-contribution-grid-snake.svg
-            dist/github-contribution-grid-snake-dark.svg?palette=github-dark
+            dist/github-snake.svg
+            dist/github-snake-dark.svg?palette=github-dark
+            dist/ocean.gif?color_snake=orange&color_dots=#bfd6f6,#8dbdff,#64a1f4,#4b91f1,#3c7dd9
 
+      # 3. Este paso es CRÍTICO: toma los archivos creados y los guarda en tu repositorio
       - name: Push snake animation
         uses: ad-m/github-push-action@master
         with:
