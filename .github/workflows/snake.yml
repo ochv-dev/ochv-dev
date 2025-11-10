@@ -1,0 +1,30 @@
+name: Generate snake
+on:
+  schedule:
+    - cron: "0 */12 * * *" # Se actualiza cada 12 horas
+  workflow_dispatch: # Te permite ejecutarlo manualmente
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Generate snake animation
+        uses: Platane/snk@v3
+        with:
+          # Tu nombre de usuario de GitHub
+          github_user_name: Oscar-Chavez-Vasquez
+          
+          # Dónde guardar los archivos SVG
+          outputs: |
+            dist/github-contribution-grid-snake.svg
+            dist/github-contribution-grid-snake-dark.svg?palette=github-dark
+
+      - name: Push snake animation
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
+          directory: dist
+          force: true
