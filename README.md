@@ -35,7 +35,8 @@ As I am just starting, my repository mainly contains my class projects and exerc
 
 </h4>  
   
-![Snake animation](https://github.com/ochv-dev/ochv-dev/blob/output/dist/github-snake.svg?raw=true)
+![Snake animation](https://github.com/ochv-dev/ochv-dev/blob/output/github-snake.svg?raw=true)
+
 
 <br/>
 
