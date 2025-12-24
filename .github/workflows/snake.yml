@@ -24,7 +24,7 @@ jobs:
         uses: Platane/snk@v3
         with:
           # Tu nombre de usuario (ya está puesto)
-          github_user_name: Oscar-Chavez-Vasquez
+          github_user_name: ochv-dev
           
           # Los 3 archivos que se van a crear (simple, modo oscuro y GIF)
           outputs: |
